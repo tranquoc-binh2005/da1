@@ -1,0 +1,72 @@
+Website Hạt Vàng
+1. Dự án có bao nhiêu vai trò
+2. Các vai trò có thể làm gì
+
+1. Có 2 vai trò chính
+    - Quản trị viên
+    - Khách hàng
+2. Các vai trò có thể làm gì
+    - Quản trị viên
+        1. Quản lý tài khoản người dùng
+            - Xem danh sách người dùng
+            - Xem thông tin chi tiết
+            - Filter (tên, email, ngày)
+        2. Quản lý tài khoản quản trị viên
+            - CRUD tài khoản quản trị
+            - Xem danh sách quản trị viên
+            - Filter (tên, email, ngày)
+        3. Quản lý nhóm vai trò
+            - CRUD nhóm vài trò
+            - Danh sách nhóm vai trò
+            - Phân quyền cho quản trị viên
+        4. Quản lý danh mục sản phẩm
+            - CRUD danh mục
+            - Danh sách danh mục
+            - Filter (tên, trạng thái)
+        5. Quản lý thuộc tính sản phẩm
+            - CRUD thuộc tính sản phẩm
+            - Danh sách thuộc tính
+            - Filter (trọng lượng, vdu: 200g, 500g)
+        6. Quản lý sản phẩm
+            - CRUD sản phẩm
+            - Quản lý hỉnh ảnh (sp có nhiều hình)
+            - Filter (tên, danh mục)
+            - Danh sách sản phẩm
+            - Trạng thái sản phẩm (ẩn, hiện)
+        7. Quản lý danh sách đơn hàng
+            - Xử lý đơn hàng
+            - Quản lý đơn hàng theo trạng thái (chờ xác nhận, đang giao, hoành thành, đã huỷ)
+            - Quản lý đơn hàng (mã, tên khách hàng, ngày)
+        8. Quản lý banner, slider
+            - CRUD banner quảng cáo
+        9. Quản lý thông kế, báo cáo
+            - Thống kê doanh thu (ngày, tháng, năm)
+            - Thống kê sản phẩm bán chạy
+        10. Đăng nhập
+    - Khách hàng
+        1. Đăng kí tài khoản
+        2. Đăng nhập
+        3. Thông tin cá nhân
+            - Xem, cập nhật thông tin
+            - Đỗi mật khẩu
+        4. Sản phẩm
+            - Danh sách sản phẩm
+            - Sản phẩm nỗi bật
+            - Chi tiết sản phẩm
+            - Filter (danh mục, tên, trọng lượng)
+            - Đánh giá sản phẩm
+        5. Danh mục sản phẩm
+            - Xem danh sách danh mục sản phẩm
+            - Sản phẩm theo danh mục
+        6. Giỏ hàng
+            - Thêm sp vào giỏ hàng
+            - Cập nhật giỏ hàng
+            - Thêm voucher giảm giá
+        7. Thanh toán
+            - Nhập thông tin giao hàng
+            - Chọn phương thức thanh toán (cod, momo, vnpay)
+        8. Lịch sử đơn hàng
+            - Theo giỏi tình trạng đơn hàng
+            - Huỷ đơn hàng (đang chờ xác nhận)
+            - Mua lại đơn hàng (hoàn thành, đã huỷ)
+        9. Lưu sản phẩm yêu thích

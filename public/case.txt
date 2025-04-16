@@ -1,0 +1,6 @@
+http://localhost:8000/dashboard/users/index?type=all&keyword=binh&publish=1&id[lt]=50&created_at[lt]=2025-03-15
+type => lay ra dang all
+keyword => tim theo tu khoa
+publish => simpleFilter tim theo publish = 1
+id[lt] => id letter than 50 (id < 50)
+created_at=2025-03-15 => tim record duoc tao truoc ngay (DATE)2025-03-15

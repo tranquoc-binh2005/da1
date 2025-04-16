@@ -1,0 +1,13 @@
+//lay user_catalogues bang join qua email
+SELECT
+    users.id AS user_id,
+    users.name AS user_name,
+    users.email,
+    users.address,
+    users.bio,
+    users.birthday,
+    user_catalogues.id AS role_id,
+    user_catalogues.name AS role_name
+FROM users
+         LEFT JOIN user_catalogues ON users.user_catalogue_id = user_catalogues.id
+WHERE users.email = 'binhtranquoc2005@gmail.com';
