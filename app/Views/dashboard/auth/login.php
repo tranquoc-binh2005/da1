@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Upvex - Responsive Admin Dashboard Template</title>
-    <base href="http://localhost:8000/">
+    <base href="<?=BASE_URL?>">
     <?php include ('app/Views/dashboard/layout/head.php')?>
 </head>
 

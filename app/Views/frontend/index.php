@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title><?=$title ?? "Hạt Vàng Organic"?></title>
+    <base href=" <?=BASE_URL?>">
     <?php include 'layout/head.php';?>
 </head>
 <body>

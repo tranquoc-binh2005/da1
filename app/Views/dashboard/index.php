@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title><?=$title ?? "Trang quản trị hệ thống"?></title>
-    <base href="http://localhost:8000/">
+    <base href=" <?=BASE_URL?>">
     <?php include ('layout/head.php')?>
 </head>
 
