@@ -57,8 +57,99 @@ const updateQuantityProduct = () => {
     });
 };
 
+
+const sendRatingProduct = () => {
+    $('.btn-send-rating-product').on('click', function (e) {
+        e.preventDefault();
+
+        let rating = $('input[name="rating"]:checked').val();
+        let name = $('.comment-input').eq(0).val().trim();
+        let email = $('.comment-input').eq(1).val().trim();
+        let content = $('.comment-input').eq(2).val().trim();
+        let productId = $(this).data('product');
+
+        if (!rating) {
+            alertWarning('Vui lòng chọn số sao đánh giá!');
+            return;
+        }
+        if (name === '') {
+            alertWarning('Vui lòng nhập họ và tên!');
+            return;
+        }
+        if (email === '' || !validateEmail(email)) {
+            alertWarning('Vui lòng nhập email hợp lệ!');
+            return;
+        }
+        if (content === '') {
+            alertWarning('Vui lòng nhập nội dung đánh giá!');
+            return;
+        }
+
+        let data = {
+            rating: rating,
+            name: name,
+            email: email,
+            content: content,
+            product_id: productId
+        }
+
+        $.ajax({
+            url: '/ajax/rating',
+            type: 'POST',
+            data: { data: data },
+            success: async function (response) {
+                if (response.status === true) {
+                    await alertSuccess('', response.message)
+                    window.location.reload();
+                }
+                if(response.status === false && response.isLogin === false){
+                    await alertWarning('', response.message)
+                    window.location.href = '/dang-nhap'
+                }
+            },
+            error: function (response) {
+                $('.loader-container').hide();
+                console.log(response.message)
+            }
+        });
+    });
+};
+const validateEmail = (email) => {
+    const regex = /^\S+@\S+\.\S+$/;
+    return regex.test(email);
+}
+
+const textToRating = () => {
+    $('input[name="rating"]').on('change', function () {
+        const rating = $(this).val();
+        let message = '';
+
+        switch (rating) {
+            case '1':
+                message = 'Tệ';
+                break;
+            case '2':
+                message = 'Cần cải thiện';
+                break;
+            case '3':
+                message = 'Bình thường';
+                break;
+            case '4':
+                message = 'Tốt';
+                break;
+            case '5':
+                message = 'Tuyệt vời';
+                break;
+        }
+
+        $('#text-rating').text('Đánh giá: ' + message);
+    });
+}
+
 $(document).ready(function () {
     completeProduct();
     updateQuantityProduct();
+    sendRatingProduct();
+    textToRating();
 });
 

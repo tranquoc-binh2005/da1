@@ -21,10 +21,6 @@
         </div>
         <div class="menu-secondary mr-20">
             <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <a href="#" class="icon-menu">
-                <span class="span-icon">0</span>
-                <i class="fa-regular fa-heart"></i>
-            </a>
             <a href="/gio-hang" class="icon-menu">
                 <span class="span-icon" id="countCart">
                     <?=isset($dataCart['cart']) ? count($dataCart['cart']) : 0?>
@@ -41,9 +37,7 @@
                         echo '<a href="/dang-nhap">Đăng nhập</a>';
                     }
                     ?>
-                    <a href="/thong-tin-ca-nhan">Thông tin cá nhân</a>
-                    <a href="/cap-nhat-mat-khau">Cập nhật mật khẩu</a>
-                    <a href="/cap-nhat-dia-chi">Cập nhật địa chỉ</a>
+                    <a href="/cai-dat">Cài đặt</a>
                     <a href="/don-hang">Đơn hàng</a>
                 </div>
             </div>

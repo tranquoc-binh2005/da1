@@ -15,6 +15,7 @@ use App\Http\Controllers\Ajax\ChangePassword as AjaxChangePasswordController;
 use App\Http\Controllers\Ajax\AddressShoppingController as AjaxAddressShoppingController;
 use App\Http\Controllers\Ajax\VoucherController as AjaxVoucherController;
 use App\Http\Controllers\Ajax\HistoryController as AjaxHistoryController;
+use App\Http\Controllers\Ajax\RatingController as AjaxRatingController;
 
 use App\Http\Controllers\Dashboard\Account\AdminController;
 use App\Http\Controllers\Dashboard\Account\UserController;
@@ -40,6 +41,9 @@ use App\Http\Controllers\Frontend\Checkout\CheckoutController as FrontendCheckou
 use App\Http\Controllers\Frontend\History\HistoryController as FrontendHistoryController;
 use App\Http\Controllers\Frontend\Post\PostController as FrontendPostController;
 use App\Http\Controllers\Frontend\About\AboutController as FrontendAboutController;
+use App\Http\Controllers\Frontend\Setting\SettingController as FrontendSettingController;
+use App\Http\Controllers\Frontend\Contact\ContactController as FrontendContactController;
+
 use App\Routes\web;
 
 $router = new web();
@@ -66,7 +70,10 @@ $router->group(['middleware' => ['ClientIsLogin']], function($router) {
     $router->post('/ajax/updateAddressShopping', AjaxAddressShoppingController::class . '@updateAddressShopping');
     $router->post('/ajax/changeAddressShopping', AjaxAddressShoppingController::class . '@changeAddressShopping');
     $router->post('/ajax/callHistoryOrderByStatus', AjaxHistoryController::class . '@callHistoryOrderByStatus');
+    $router->post('/ajax/cancelOrder', ChangeStatusController::class . '@cancelOrder');
 });
+
+$router->post('/ajax/rating', AjaxRatingController::class . '@rating');
 
 $router->group(['middleware' => ['CheckPermission']], function($router) {
     $router->get('/dashboard/users/index', UserController::class . '@index')->middleware(['AuthMiddleware']);
@@ -199,12 +206,16 @@ $router->group(['middleware' => ['ClientIsLogin']], function($router) {
 
     $router->get('/don-hang', FrontendHistoryController::class . '@history');
     $router->get('/don-hang/chi-tiet-don-hang/{id}', FrontendHistoryController::class . '@detail');
+
+    $router->get('/cai-dat', FrontendSettingController::class . '@setting');
 });
 $router->get('/gioi-thieu', FrontendAboutController::class . '@about');
+$router->get('/lien-he', FrontendContactController::class . '@contact');
 
 // auth client
 $router->get('/dang-nhap', FrontendAuthController::class . '@login');
 $router->post('/xu-ly-dang-nhap', FrontendAuthController::class . '@handleLogin');
+$router->get('/loginGoogle', FrontendAuthController::class . '@loginGoogle');
 $router->get('/dang-xuat', FrontendAuthController::class . '@logout');
 $router->get('/dang-ky-tai-khoan', FrontendAuthController::class . '@register');
 $router->post('/xu-ly-dang-ky-tai-khoan', FrontendAuthController::class . '@handleRegister');

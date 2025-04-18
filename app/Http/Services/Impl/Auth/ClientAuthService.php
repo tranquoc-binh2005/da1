@@ -10,12 +10,15 @@ use App\Traits\HasAlert;
 use App\Traits\HasRender;
 use App\Http\Services\Interfaces\Mail\RegisterAccountSendMailInterface as RegisterAccountSendMail;
 use App\Http\Repositories\Interfaces\VerifyRepositoryInterface as VerifyRepository;
+use App\Http\Helpers\Google;
+use Google\Service\Exception;
 
 class ClientAuthService extends BaseService implements ClientAuthServiceInterface
 {
     use HasAlert, HasRender;
     protected UserRepository $userRepository;
     protected Authenticate $authenticateModel;
+    protected Google $clientGoogle;
     protected VerifyRepository $verifyRepository;
     protected RegisterAccountSendMail $registerAccountSendMail;
     protected const EXPRIRE_AT_VERIFY = 600;
@@ -29,6 +32,7 @@ class ClientAuthService extends BaseService implements ClientAuthServiceInterfac
         $this->userRepository = $userRepository;
         $this->registerAccountSendMail = $registerAccountSendMail;
         $this->verifyRepository = $verifyRepository;
+        $this->clientGoogle = new Google();
         $this->authenticateModel = new Authenticate();
         parent::__construct($userRepository, $this->authenticateModel);
     }
@@ -51,7 +55,10 @@ class ClientAuthService extends BaseService implements ClientAuthServiceInterfac
                 $this->with('error', 'Thất bại', 'Vui lòng kiểm tra lại tài khoản hoặc mật khẩu');
                 return false;
             }
-            if (password_verify($credentials['password'], $this->client['password'])) {
+            $passwordInput = $credentials['password'] ?? '';
+            $hashedPassword = $this->client['password'] ?? null;
+
+            if (!empty($hashedPassword) && password_verify($passwordInput, $hashedPassword)) {
                 $_SESSION['user'] = $this->client;
                 return true;
             }
@@ -145,4 +152,65 @@ class ClientAuthService extends BaseService implements ClientAuthServiceInterfac
         unset($_SESSION['admin']);
         redirect('warning', '', 'Bạn đã bị thu hồi quyền', '/auth/login');
     }
+
+    /**
+     * @throws Exception
+     * @throws \Exception
+     */
+    public function loginGoogle()
+    {
+        if (isset($_GET['code'])) {
+            $token = $this->clientGoogle->fetchAccessTokenWithAuthCode($_GET['code']); // OK
+
+            if (!isset($token['error'])) {
+                $this->clientGoogle->setAccessToken($token['access_token']);
+
+                $google_oauth = new \Google_Service_Oauth2($this->clientGoogle->getClient());
+                $user_info = $google_oauth->userinfo->get();
+                $email = $user_info->email;
+
+                $existingUser = $this->checkIfEmailExists($email);
+
+                if ($existingUser) {
+                    $_SESSION['user'] = $existingUser;
+                } else {
+                    $newUserId = $this->createNewUser($user_info);
+
+                    $_SESSION['user'] = [
+                        'id' => $newUserId,
+                        'name' => $user_info->name,
+                        'email' => $user_info->email,
+                        'picture' => $user_info->picture
+                    ];
+                }
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    /**
+     * @throws ModelNotFoundException
+     */
+    private function checkIfEmailExists($email): ?array
+    {
+        $user = $this->userRepository->findByEmail($email);
+        return $user ? $user : null;
+    }
+
+
+    /**
+     * @throws \Exception
+     */
+    private function createNewUser($user_info): int
+    {
+        $data = [
+            'email' => $user_info->email,
+            'password' => null
+        ];
+        return $this->userRepository->createAccount($data);
+    }
+
+
 }

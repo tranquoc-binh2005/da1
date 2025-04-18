@@ -135,4 +135,18 @@ class AuthController
             $this->handleLogException($e);
         }
     }
+
+    public function loginGoogle(): void
+    {
+        try {
+            if($this->clientAuthService->loginGoogle() === false) {
+                redirect('error', '', 'Đăng nhập thất bại, vui lòng kiểm tra lại mật khẩu', '/dang-nhap');
+                die();
+            }
+            redirect('success', '', 'Đăng nhập thành công', '/trang-chu');
+            die();
+        } catch (\Exception $e){
+            $this->handleLogException($e);
+        }
+    }
 }

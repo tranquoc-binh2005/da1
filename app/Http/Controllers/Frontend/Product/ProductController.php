@@ -120,6 +120,7 @@ class ProductController extends BaseController
     {
         $product = $this->productService->findByCanonical($canonical);
         $product = $this->productViewModel->buildVariantsProduct($product);
+        $product = $this->productViewModel->buildRatingProduct($product);
         $product = new DetailProductResource($product);
         return $product->toArray();
     }

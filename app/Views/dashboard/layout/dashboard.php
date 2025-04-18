@@ -230,9 +230,7 @@
         </div>
     </div><!-- end col -->
 </div>
-<?php
-//print_r($productBestSellers); die();
-?>
+
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -248,7 +246,7 @@
                         <div class="col-sm-12">
                             <table id="datatable-buttons"
                                 class="table table-striped dt-responsive nowrap dataTable no-footer dtr-inline collapsed"
-                                role="grid" aria-describedby="datatable-buttons_info" style="width: 1115px;">
+                                role="grid" aria-describedby="datatable-buttons_info" style="width: 100%;">
                                 <thead>
                                     <tr role="row">
                                         <th>#</th>
@@ -256,6 +254,7 @@
                                         <th>Tên sản phẩm</th>
                                         <th>Giá bán</th>
                                         <th>Số lượt bán</th>
+                                        <th>Xem</th>
                                     </tr>
                                 </thead>
 
@@ -282,6 +281,11 @@
                                                 ?>
                                             </td>
                                             <td><?=$productBestSeller['total_sold']?></td>
+                                            <td>
+                                                <a style="font-size: 20px;" href="/dashboard/products/show/<?=$productBestSeller['id']?>" title="Chỉnh sửa sản phẩm">
+                                                    <i class="fe-edit"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     <?php endforeach;?>
                                 </tbody>

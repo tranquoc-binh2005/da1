@@ -92,14 +92,29 @@ class ChangeStatusController
         header('Content-Type: application/json');
         try {
             $data = $_POST['data'];
-            foreach ($data as &$val){
-                if($val['status'] < 3){
-                    $val['status'] = $val['status'] + 1;
-                } else {
-                    $val['status'] = 3;
-                }
+            foreach ($data as &$val) {
+                if ($val['status'] === 4) continue;
+
+                if ($val['status'] < 3) $val['status'] += 1;
+
                 $this->orderRepository->changeStatusOrder($val);
             }
+            echo json_encode(['status' => true, 'message' => 'success']);
+        } catch (\Exception $e) {
+            echo json_encode(['status' => false, 'message' => $e->getMessage()]);
+            throw $e;
+        }
+    }
+
+    public function cancelOrder(): void
+    {
+        header('Content-Type: application/json');
+        try {
+            $data = [
+                'status' => 4,
+                'id' => $_POST['orderId']
+            ];
+            $this->orderRepository->changeStatusOrder($data);
             echo json_encode(['status' => true, 'message' => 'success']);
         } catch (\Exception $e) {
             echo json_encode(['status' => false, 'message' => $e->getMessage()]);

@@ -71,6 +71,11 @@
         <?=$product['content']?>
     </div>
 
+    <div class="main-title mt-20">
+        <h1 class="section-title">Đánh giá sản phẩm</h1>
+    </div>
+    <?php include 'rating.php';?>
+
     <?php if (!empty($_SESSION['recentlyProduct'])): ?>
     <div class="main-title mt-20">
         <h1 class="section-title">Sản phẩm đã xem gần đây</h1>

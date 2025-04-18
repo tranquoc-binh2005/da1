@@ -28,6 +28,7 @@ class DetailProductResource extends JsonResource
             'meta_description' => $item['meta_description'] ?? null,
             'variants' => $item['variants'] ?? null,
             'default_variant' => $item['default_variant'] ?? null,
+            'rating' => $item['rating'] ?? null,
         ];
     }
 }

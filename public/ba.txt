@@ -68,5 +68,3 @@ Website Hạt Vàng
         8. Lịch sử đơn hàng
             - Theo giỏi tình trạng đơn hàng
             - Huỷ đơn hàng (đang chờ xác nhận)
-            - Mua lại đơn hàng (hoàn thành, đã huỷ)
-        9. Lưu sản phẩm yêu thích

@@ -14,3 +14,5 @@
 <script src="/public/hatvang/assets/js/voucher.js"></script>
 <script src="/public/hatvang/assets/js/checkout.js"></script>
 <script src="/public/hatvang/assets/js/history.js"></script>
+<script src="/public/hatvang/assets/js/order.js"></script>
+<script src="/public/hatvang/assets/js/chatbot.js"></script>

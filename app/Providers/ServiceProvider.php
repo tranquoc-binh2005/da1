@@ -81,6 +81,8 @@ use App\Http\Services\Interfaces\Upload\ImageServiceInterface;
 use App\Http\Services\Interfaces\Voucher\VoucherServiceInterface;
 use App\Http\Repositories\Interfaces\DashboardBuilderRepositoryInterface;
 use App\Http\Repositories\Dashboard\DashboardBuilderRepository;
+use App\Http\Repositories\Product\ProductRatingRepository;
+use App\Http\Repositories\Interfaces\ProductRatingRepositoryInterface;
 
 class ServiceProvider
 {
@@ -125,6 +127,7 @@ class ServiceProvider
         OrderStatusRepositoryInterface::class => OrderStatusRepository::class,
         SendMailInvoiceServiceInterface::class => SendMailInvoiceService::class,
         DashboardBuilderRepositoryInterface::class => DashboardBuilderRepository::class,
+        ProductRatingRepositoryInterface::class => ProductRatingRepository::class,
     ];
 
     /**

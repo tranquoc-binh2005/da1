@@ -1,4 +1,9 @@
-<div class="healthy-eating container">
+<div class="nav_list container-full">
+    <a href="Home.html" class="conect">Trang chủ</a>
+    <p class="conect">></p>
+    <a href="" class="conect" style="color: #6F768D;">San pham</a>
+</div>
+<div class="healthy-eating container mt-20">
     <div class="healthy-eating__left">
         <img class="healthy-eating__left-image" src="/public/hatvang/assets/img/about-1.png" alt="Person preparing food">
     </div>
@@ -88,44 +93,52 @@
     </div>
 </div>
 
-<div class="container">
-    <h3 class="partner-benefits__right-subtitle">Chúng tôi cung cấp những gì?</h3>
-    <div class="partner-benefits__right-features">
-        <div class="partner-benefits__right-features-item">
-            <div class="partner-benefits__right-features-item-icon">
-                <img src="/public/hatvang/assets/img/about-2.png" alt="Discount icon">
-            </div>
-            <div class="partner-benefits__right-features-item-text">
-                <div class="partner-benefits__right-features-item-text-title">Ưu đãi hấp dẫn</div>
-                <div class="partner-benefits__right-features-item-text-description">Nhiều chương trình khuyến mãi dành cho khách hàng mới và thân thiết</div>
-            </div>
+<div class="title-center container mt-20">
+    <h1 class="section-title">Chúng tôi cung cấp những gì</h1>
+</div>
+
+<div class="services">
+    <div class="services__card">
+        <div class="services__card__icon">
+            <img src="/public/hatvang/assets/img/icon-1.png" alt="">
         </div>
-        <div class="partner-benefits__right-features-item">
-            <div class="partner-benefits__right-features-item-icon">
-                <img src="/public/hatvang/assets/img/about-2.png" alt="Best price icon">
-            </div>
-            <div class="partner-benefits__right-features-item-text">
-                <div class="partner-benefits__right-features-item-text-title">Giá tốt nhất</div>
-                <div class="partner-benefits__right-features-item-text-description">Chúng tôi cam kết sản phẩm chất lượng với mức giá tốt nhất</div>
-            </div>
+        <h3 class="services__card__title">Ưu đãi hấp dẫn</h3>
+        <p class="services__card__description">
+            Nhiều chương trình khuyến mãi dành cho Khách hàng mới và thân thiện
+        </p>
+        <a href="#" class="services__card__link">Đọc thêm</a>
+    </div>
+
+    <div class="services__card">
+        <div class="services__card__icon">
+            <img src="/public/hatvang/assets/img/icon-2.png" alt="">
         </div>
-        <div class="partner-benefits__right-features-item">
-            <div class="partner-benefits__right-features-item-icon">
-                <img src="/public/hatvang/assets/img/about-2.png" alt="Free shipping icon">
-            </div>
-            <div class="partner-benefits__right-features-item-text">
-                <div class="partner-benefits__right-features-item-text-title">Giao hàng miễn phí</div>
-                <div class="partner-benefits__right-features-item-text-description">Hỗ trợ vận chuyển nhanh chóng trên toàn quốc</div>
-            </div>
+        <h3 class="services__card__title">Giao tốt nhất</h3>
+        <p class="services__card__description">
+            Chung tay cam kết sản phẩm chất lượng tốt với mức giá tốt nhất
+        </p>
+        <a href="#" class="services__card__link">Đọc thêm</a>
+    </div>
+
+    <div class="services__card">
+        <div class="services__card__icon">
+            <img src="/public/hatvang/assets/img/icon-3.png" alt="">
         </div>
-        <div class="partner-benefits__right-features-item">
-            <div class="partner-benefits__right-features-item-icon">
-                <img src="/public/hatvang/assets/img/about-2.png" alt="Exchange icon">
-            </div>
-            <div class="partner-benefits__right-features-item-text">
-                <div class="partner-benefits__right-features-item-text-title">Đổi trả dễ dàng</div>
-                <div class="partner-benefits__right-features-item-text-description">Chính sách đổi trả linh hoạt, đảm bảo quyền lợi khách hàng</div>
-            </div>
+        <h3 class="services__card__title">Giao hàng miễn phí</h3>
+        <p class="services__card__description">
+            Hỗ trợ vận chuyển nhanh chóng trên toàn quốc
+        </p>
+        <a href="#" class="services__card__link">Đọc thêm</a>
+    </div>
+
+    <div class="services__card">
+        <div class="services__card__icon">
+            <img src="/public/hatvang/assets/img/icon-5.png" alt="">
         </div>
+        <h3 class="services__card__title">Đổi trả dễ dàng</h3>
+        <p class="services__card__description">
+            Chính sách đổi trả linh hoạt, đảm bảo quyền lợi Khách hàng
+        </p>
+        <a href="#" class="services__card__link">Đọc thêm</a>
     </div>
 </div>

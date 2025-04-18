@@ -35,6 +35,15 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         }
     }
 
+    public function findByEmail(string $email): ?array
+    {
+        try {
+            $sql = "SELECT * FROM users WHERE email = :email";
+            return $this->find($sql, [":email" => $email]) ?? null;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 
     public function checkIsPassword(array $payload): bool
     {

@@ -81,8 +81,10 @@
                     </li>
                 <?php endforeach; ?>
             </ul>
-
-            <a class="btn btn-second <?=($dataDetailOrder['status_order_id'] <= 1) ? '' : 'hidden'?>">Hủy đơn</a>
+            <a class="btn btn-second btn-cancel-order
+                <?=($dataDetailOrder['status_order_id'] <= 1 && $dataDetailOrder['payment_method'] === 'cod') ? '' : 'hidden'?>"
+               data-id="<?=$dataDetailOrder['id']?>"
+            >Hủy đơn</a>
         </div>
     </div>
 </div>
@@ -92,19 +94,21 @@ function getOrderStatusSteps(int $status_order_id): array {
     $steps = [
         ['label' => 'Đơn hàng đã được đặt thành công', 'note' => '', 'id' => 0],
         ['label' => 'Đơn hàng đang chờ xác nhận', 'note' => '', 'id' => 1],
-        [
-            'label' => 'Đơn hàng đang được xử lý',
-            'note' => ($status_order_id >= 2 && $status_order_id !== 4) ? 'Đơn vị vận chuyển đang lấy hàng' : '',
-            'id' => 2
-        ],
-        ['label' => 'Đơn hàng đã giao thành công', 'note' => '', 'id' => 3],
     ];
 
     if ($status_order_id === 4) {
         $steps[] = ['label' => 'Đơn hàng đã bị hủy', 'note' => '', 'id' => 4];
+    } else {
+        $steps[] = [
+            'label' => 'Đơn hàng đang được xử lý',
+            'note' => ($status_order_id >= 2 && $status_order_id !== 4) ? 'Đơn vị vận chuyển đang lấy hàng' : '',
+            'id' => 2
+        ];
+        $steps[] = ['label' => 'Đơn hàng đã giao thành công', 'note' => '', 'id' => 3];
     }
     return $steps;
 }
+
 
 function getStatusClass(int $currentStatus, int $stepId): string {
     if ($stepId < $currentStatus) return 'order-details__content__status__item--completed';

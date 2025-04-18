@@ -11,13 +11,16 @@ body{
 html, body {
     height: 100%;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: auto !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
 }
 
+html.swal2-shown, body.swal2-shown {
+    overflow: hidden !important;
+}
 
 body::-webkit-scrollbar {
     display: none;
@@ -55,7 +58,7 @@ a{
     --primary: #28a745;
     --primary-200: #EDFFEC;
     --second: #F08B3F;
-    --secondary: #D9D9D9;
+    --secondary: #a6a4a4;
     --black: #000000;
     --light: #ffffff;
 }
@@ -1053,11 +1056,10 @@ footer{
 }
 
 .profile-container {
-    background-color: #fff;
+    /*background-color: #fff;*/
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 600px;
     padding: 20px;
 }
 
@@ -1375,7 +1377,6 @@ footer{
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background-color: #fff;
 }
 
 .password-change-container .form-title {
@@ -2458,6 +2459,7 @@ order-history__title {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: center;
 }
 
 .healthy-eating__right-title {
@@ -2530,6 +2532,7 @@ order-history__title {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: center;
 }
 
 .partner-benefits__right-title {
@@ -2593,4 +2596,602 @@ order-history__title {
 .partner-benefits__right-features-item-text-description {
     font-size: 14px;
     color: #666;
+}
+
+.sidebar-setting{
+    width: 220px;
+    background-color: var(--primary);
+    color: var(--black) !important;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-setting a {
+    padding: 12px 20px;
+    text-decoration: none;
+    color: var(--black) !important;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar-setting a:hover {
+    background-color: var(--primary-200);
+}
+
+.wrapper-container {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+.settings{
+    display: flex;
+}
+.services {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Mỗi thẻ dịch vụ */
+.services__card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 22%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect cho thẻ */
+.services__card:hover {
+    transform: translateY(-5px);
+}
+
+/* Icon trong thẻ */
+.services__card__icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+}
+
+.services__card__icon img{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tiêu đề của thẻ */
+.services__card__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Mô tả của thẻ */
+.services__card__description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+/* Liên kết "Đọc thêm" */
+.services__card__link {
+    font-size: 14px;
+    color: #28a745;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.services__card__link:hover {
+    text-decoration: underline;
+}
+.title-center{
+    display: flex;
+    justify-content: center;
+}
+
+.contact {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Phần thông tin liên hệ bên trái */
+.contact__info {
+    background-color: #2e7d32;
+    color: #fff;
+    padding: 30px;
+    width: 40%;
+    position: relative;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.contact__info__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.contact__info__description {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.contact__info__details {
+    font-size: 14px;
+    line-height: 2;
+}
+
+.contact__info__details span {
+    display: block;
+}
+
+.contact__info__details i {
+    margin-right: 10px;
+}
+
+.contact__info__background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 235, 59, 0.3) 30%, transparent 70%);
+    opacity: 0.5;
+}
+
+/* Phần form bên phải */
+.contact__form {
+    padding: 30px;
+    width: 60%;
+}
+
+.contact__form__group {
+    margin-bottom: 20px;
+}
+
+.contact__form__group label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.contact__form__group input,
+.contact__form__group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.contact__form__group textarea {
+    resize: none;
+    height: 80px;
+}
+
+.contact__form__button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.contact__form__button button {
+    background-color: #2e7d32;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.contact__form__button button i {
+    margin-left: 5px;
+}
+
+.contact__form__button button:hover {
+    background-color: #25632a;
+}
+
+.chatbot-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    position: fixed; /* Sử dụng fixed thay vì absolute để cố định vị trí */
+    right: 50px;
+    bottom: 50px;
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+    z-index: 1000;
+}
+
+/* Trạng thái thu nhỏ */
+.chatbot-container.minimized {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    background: var(--primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ẩn nội dung khi thu nhỏ */
+.chatbot-container.minimized .chatbot-header,
+.chatbot-container.minimized #outputTextChatbot,
+.chatbot-container.minimized .chatbot-toolbar {
+    display: none;
+}
+
+/* Icon khi thu nhỏ */
+.chatbot-container.minimized::before {
+    content: "💬";
+    font-size: 24px;
+    color: white;
+}
+
+/* Phần hiển thị tin nhắn */
+#outputTextChatbot {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: linear-gradient(to bottom, #ffffff, #f0f2f5);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Tin nhắn từ chatbot */
+.chatbot-message {
+    align-self: flex-start;
+    background: #ffffff;
+    padding: 12px 16px;
+    border-radius: 18px 18px 18px 4px;
+    max-width: 80%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: #333;
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Tin nhắn từ người dùng */
+.user-message {
+    align-self: flex-end;
+    background: var(--primary);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 18px 18px 4px 18px;
+    max-width: 80%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Ô nhập liệu */
+#inputTextChatbot {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    resize: none;
+    outline: none;
+    font-size: 14px;
+    max-height: 150px;
+    background: white;
+}
+
+#inputTextChatbot::placeholder {
+    color: #999;
+}
+
+/* Nút gửi */
+#btnSendChatbot {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+#btnSendChatbot:hover {
+    background: var(--primary);
+}
+
+#btnSendChatbot:active {
+    background: var(--primary);
+}
+
+/* Thanh công cụ dưới cùng */
+.chatbot-toolbar {
+    display: flex;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Hiệu ứng */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Thanh cuộn tùy chỉnh */
+#outputTextChatbot::-webkit-scrollbar {
+    width: 6px;
+}
+
+#outputTextChatbot::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#outputTextChatbot::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+/* Header chatbot */
+.chatbot-header {
+    background: var(--primary);
+    color: white;
+    padding: 16px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    position: relative;
+}
+
+/* Nút thu nhỏ trong header */
+.minimize-btn {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+.user-message {
+    text-align: right;
+    background-color: var(--primary-200);
+    color: var(--black);
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.chatbot-message {
+    text-align: left;
+    background-color: #eee;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+}
+.rating-header {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.rating-score {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.rating-score .score {
+    font-size: 24px;
+    color: #f4a261;
+    margin-right: 10px;
+}
+
+.rating-score .stars {
+    color: #f4a261;
+}
+
+.rating-score .count {
+    color: #666;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.rating-distribution {
+    margin-top: 10px;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.rating-row .label {
+    width: 40px;
+    color: #f4a261;
+    font-size: 14px;
+}
+
+.rating-row .progress {
+    flex-grow: 1;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin: 0 10px;
+}
+
+.rating-row .progress-fill {
+    height: 100%;
+    background: #2a9d8f;
+    border-radius: 4px;
+}
+
+.rating-row .value {
+    width: 40px;
+    text-align: right;
+    color: #666;
+}
+
+.review-section {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.review-actions {
+    margin-bottom: 10px;
+}
+
+.btn-rate, .btn-comment {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    background: none;
+}
+
+.btn-rate:hover, .btn-comment:hover {
+    background: var(--primary-200);
+}
+
+.comment-form {
+    display: none;
+    margin-top: 10px;
+}
+
+.comment-form.active {
+    display: block;
+}
+
+.review-list {
+    display: none;
+}
+
+.review-list.active {
+    display: block;
+}
+
+.rating-options {
+    margin-bottom: 10px;
+}
+
+.rating-options label {
+    margin-right: 10px;
+}
+
+.rating-options input[type="radio"] {
+    margin-right: 5px;
+}
+
+.comment-input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.review-item {
+    border-bottom: 1px dashed #ddd;
+    padding: 10px 0;
+}
+
+.review-item .rating {
+    color: #f4a261;
+    margin-right: 10px;
+}
+
+.review-item .content {
+    margin: 5px 0;
+}
+
+.review-item .meta {
+    color: #666;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.review-item .meta img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.review-item .meta .username {
+    margin-left: 5px;
+}
+.submit-comment{
+    display: flex;
+    justify-content: end;
+}
+
+
+.rating-stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+}
+
+.rating-stars input {
+    display: none;
+}
+
+.rating-stars label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.rating-stars input:checked ~ label,
+.rating-stars label:hover,
+.rating-stars label:hover ~ label {
+    color: gold;
+}
+
+.time-rating{
+    font-size: 14px;
+    color: grey;
+}
+
+.hidden-review {
+    display: none;
+}
+
+.social-login a{
+    text-decoration: none;
 }

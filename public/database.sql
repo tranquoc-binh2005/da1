@@ -373,3 +373,21 @@ ALTER TABLE order_details
     ADD CONSTRAINT fk_order_detail_variant_id
         FOREIGN KEY (product_variant_id) REFERENCES product_variants(id)
             ON DELETE SET NULL;
+
+
+CREATE TABLE product_ratings (
+                                 id INT AUTO_INCREMENT PRIMARY KEY,
+                                 user_id INT,
+                                 product_id INT,
+                                 customer_name VARCHAR(255),
+                                 customer_email VARCHAR(255),
+                                 customer_content TEXT,
+                                 rating INT,
+                                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                                 updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                                 CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+                                 CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+
+ALTER TABLE product_ratings
+    ADD COLUMN rating_text VARCHAR(255) AFTER rating;

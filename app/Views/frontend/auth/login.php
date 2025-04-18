@@ -183,12 +183,14 @@
         <h2>Đăng nhập</h2>
         <p class="register-link">Bạn chưa có tài khoản? <a href="/dang-ky-tai-khoan">Đăng ký tại đây</a></p>
 
-<!--        <button class="social-login fb">-->
-<!--            <img src="facebook-icon.png" alt="Facebook"> Log in with Facebook-->
-<!--        </button>-->
-<!--        <button class="social-login google">-->
-<!--            <img src="google-icon.png" alt="Google"> Log in with Google-->
-<!--        </button>-->
+        <?php
+        $client = new App\Http\Helpers\Google();
+        $login_url = $client->createAuthUrl();
+        ?>
+        <button class="social-login google">
+            <img src="/public/hatvang/assets/img/login-google.webp" alt="Google">
+            <a href="<?= htmlspecialchars($login_url) ?>">Đăng nhập với Goole</a>
+        </button>
 
         <div class="divider">Hoặc</div>
 

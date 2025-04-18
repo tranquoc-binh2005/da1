@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title><?=$title ?? "Hạt Vàng Organic"?></title>
+    <base href="<?= rtrim((isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']), '/') . '/' ?>">
     <?php include 'layout/head.php';?>
 </head>
 <body>

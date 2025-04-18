@@ -109,82 +109,9 @@
     </div>
 </section>
 
-<section class="container ">
-    <br>
-    <h1 class="section-title">Sản phẩm noi bat</h1>
+<?php include 'outstandingProducts.php';?>
 
-    <!-- Filter Bar -->
-    <div class="">
-        <button data-id="" class="filter-btn active filter-product-by-category">Tất cả</button>
-        <?php foreach ($outstandingCategories as $outstandingCategorie):?>
-            <button class="filter-btn filter-product-by-category" data-id="<?=$outstandingCategorie['id']?>"><?=$outstandingCategorie['name']?></button>
-        <?php endforeach;?>
-    </div>
-
-    <!-- Product Grid -->
-    <div class="product-grid">
-        <?php foreach ($outstandingProducts as $outstandingProduct):?>
-            <div class="product-card">
-                <span class="discount-tag <?=($outstandingProduct['discount'] > 0) ? '' : 'hidden'?>">-<?=$outstandingProduct['discount']?>%</span>
-                <div class="product-image-wrapper">
-                    <img loading="lazy" src="<?=$outstandingProduct['image']?>" alt="<?=$outstandingProduct['name']?>">
-                </div>
-                <h3>
-                    <a href="san-pham/chi-tiet-san-pham/<?=$outstandingProduct['canonical']?>"><?=$outstandingProduct['name']?></a>
-                </h3>
-                <p><?=$outstandingProduct['description']?></p>
-                <p class="price">
-                    <?php if (!empty($outstandingProduct['default_variant']['price_sale'])): ?>
-                        <?= number_format((float)$outstandingProduct['default_variant']['price_sale'], 0, ',', '.') ?>đ
-                    <?php else: ?>
-                        <?= number_format((float)$outstandingProduct['default_variant']['price'], 0, ',', '.') ?>đ
-                    <?php endif; ?>
-
-                    <span class="original-price">
-                        <?= !empty($outstandingProduct['default_variant']['price_sale']) && !empty($outstandingProduct['default_variant']['price']) ? number_format((float)$outstandingProduct['default_variant']['price'], 0, ',', '.') . 'đ' : '' ?>
-                    </span>
-                </p>
-            </div>
-        <?php endforeach;?>
-    </div>
-</section>
-
-<section class="container  mt-20">
-    <h1 class="section-title">Sản phẩm bán chạy</h1>
-
-    <div class="main-content">
-        <div class="banner">
-            <img src="/public/hatvang/assets/img/group-6.png" alt="Banner Image">
-            <h2>Ăn ngon<br>Sống khỏe<br>Vui vẻ</h2>
-        </div>
-
-        <div class="product-sale">
-            <?php foreach ($productsBestSellers as $productsBestSeller):?>
-                <div class="product-card">
-                    <span class="discount-tag <?=($outstandingProduct['discount'] > 0) ? '' : 'hidden'?>">-<?=$outstandingProduct['discount']?>%</span>
-                    <div class="product-image-wrapper">
-                        <img src="<?=$productsBestSeller['image']?>" alt="<?=$productsBestSeller['name']?>">
-                    </div>
-                    <h3><?=$productsBestSeller['name']?></h3>
-                    <p><?=$productsBestSeller['description']?></p>
-                    <p class="price">
-                        <?php if (!empty($productsBestSeller['default_variant']['price_sale'])): ?>
-                            <?= number_format((float)$productsBestSeller['default_variant']['price_sale'], 0, ',', '.') ?>đ
-                        <?php else: ?>
-                            <?= number_format((float)$productsBestSeller['default_variant']['price'], 0, ',', '.') ?>đ
-                        <?php endif; ?>
-                        <span class="original-price">
-                        <?= !empty($productsBestSeller['default_variant']['price_sale']) && !empty($productsBestSeller['default_variant']['price']) ? number_format((float)$productsBestSeller['default_variant']['price'], 0, ',', '.') . 'đ' : '' ?>
-                    </span>
-                    </p>
-                    <span>
-                        <?=$productsBestSeller['total_sold']?> lượt bán
-                    </span>
-                </div>
-            <?php endforeach;?>
-        </div>
-    </div>
-</section>
+<?php include 'productBestSeller.php';?>
 
 <div class="main_desc">
     <div class="container">
@@ -229,28 +156,6 @@
     </div>
 </div>
 
-<section class="container  mt-20">
-    <div class="main-title">
-        <h1 class="section-title">Bài viết</h1>
-    </div>
+<?php include 'outstandingPost.php';?>
 
-    <!-- Blog Post Grid -->
-    <div class="blog-grid">
-        <?php foreach ($outstandingPosts as $outstandingPost):?>
-        <div class="blog-card">
-            <img src="<?=$outstandingPost['image']?>" alt="<?=$outstandingPost['name']?>">
-            <div class="blog-content">
-                <h3>
-                    <?=$outstandingPost['name']?>
-                </h3>
-                <p>
-                    <?=$outstandingPost['description']?>
-                </p>
-                <button class="btn btn-primary">
-                    <a href="bai-viet/<?=$outstandingPost['canonical']?>">Xem thêm</a>
-                </button>
-            </div>
-        </div>
-        <?php endforeach;?>
-    </div>
-</section>
+<?php include 'chatbot.php';?>

@@ -5,20 +5,24 @@ namespace App\ViewModel\frontend;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductVariantResource;
 use App\Http\Repositories\Product\ProductVariantRepository;
+use App\Http\Repositories\Product\ProductRatingRepository;
 use App\Models\Database;
 use App\Traits\Str;
+use App\Http\Resources\Product\ProductRatingResource;
 
 class ProductViewModel
 {
     use Str;
 
     protected ProductVariantRepository $productVariantRepository;
+    protected ProductRatingRepository $productRatingRepository;
     protected Database $database;
 
     public function __construct()
     {
         $this->database = new Database();
         $this->productVariantRepository = new ProductVariantRepository($this->database);
+        $this->productRatingRepository = new ProductRatingRepository($this->database);
     }
 
     protected function checkDiscount($product): int
@@ -116,5 +120,16 @@ class ProductViewModel
     {
         $products = $this->productVariantRepository->productBestSelling();
         return $this->buildVariantsProduct($products);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function buildRatingProduct(array $dataProducts): array
+    {
+        $ratings = $this->productRatingRepository->getRatingByProductId($dataProducts['id']);
+        $ratings = new ProductRatingResource($ratings);
+        $dataProducts['rating'] = $ratings->toArray();
+        return $dataProducts;
     }
 }
