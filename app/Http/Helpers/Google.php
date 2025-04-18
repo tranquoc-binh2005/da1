@@ -4,8 +4,7 @@ namespace App\Http\Helpers;
 use Google_Client;
 
 class Google{
-    const CLIENT_ID = "532202380734-7uqvdmu1qi59iojbfumuin1br1c3j9a8.apps.googleusercontent.com";
-    const CLIENT_SECRET = "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";
+
 
     public $client;
 

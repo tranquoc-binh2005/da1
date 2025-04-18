@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title><?=$title ?? "Trang quản trị hệ thống"?></title>
-    <base href="http://localhost:8000/">
+    <base href="<?= rtrim((isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']), '/') . '/' ?>">
     <?php include ('layout/head.php')?>
 </head>
 
